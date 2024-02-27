@@ -25,8 +25,8 @@ app.use(express.static(path.join(__dirname,"../../bookingappfromtend/dist")))
 app.use("/api/auth",authRoutes)
 app.use("/api/users",userRoutes)
 
-
-app.listen(7000,()=>{
+const PORT=process.env.PORT  || 7000
+app.listen(PORT,()=>{
     console.log("server running on port 7000");
     
 })
