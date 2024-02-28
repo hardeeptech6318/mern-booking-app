@@ -23,9 +23,9 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended:true}))
 
-app.get("*",(req:Request,res:Response)=>{
-        res.sendFile(path.join(__dirname,"../../bookingappfromtend/dist/index.html"))
-})
+// app.get("*",(req:Request,res:Response)=>{
+//         res.sendFile(path.join(__dirname,"../../bookingappfromtend/dist/index.html"))
+// })
 
 
 app.use(cors({
