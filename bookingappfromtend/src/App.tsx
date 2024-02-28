@@ -4,6 +4,8 @@ import Register from "./pages/Register"
 import SignIn from "./pages/SignIn"
 import AddHotel from "./pages/AddHotel"
 import { useAppContext } from "./contexts/AppContext"
+import MyHotel from "./pages/MyHotel"
+import EditHotel from "./pages/EditHotel"
 
 
 
@@ -21,6 +23,8 @@ function App() {
       <Route path="/signin" element={<Layout><SignIn/></Layout>}/>
       {isLoggedIn && <>
         <Route path="/add-hotel" element={<Layout><AddHotel/></Layout>}/>
+        <Route path="/my-hotels" element={<Layout><MyHotel/></Layout>}/>
+        <Route path="/edit-hotel/:hotelId" element={<Layout><EditHotel/></Layout>}/>
       </>}
       <Route path="*" element={<Navigate to="/"/>}/>
     </Routes>

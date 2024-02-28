@@ -11,7 +11,7 @@ function TypeSection() {
         <h2 className='text-2xl font-bold mb-3'>Type</h2>
     <div className=' grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-2'>
         {hotelTypes.map((type:string)=>(
-            <label className={`cursor-pointer  text-sm rounded-full px-4 py-2 font-semibold ${ typewatch===type ?"bg-blue-300":"  bg-gray-300"}` }>
+            <label key={type} className={`cursor-pointer  text-sm rounded-full px-4 py-2 font-semibold ${ typewatch===type ?"bg-blue-300":"  bg-gray-300"}` }>
                 <input type='radio' className='hidden' value={type} {...register("type",{required:"This field is required"})}/>
                 <span>
                     {type}
