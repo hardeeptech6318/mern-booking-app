@@ -23,21 +23,26 @@ app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({extended:true}))
 
-app.get("*",(req:Request,res:Response)=>{
-        res.sendFile(path.join(__dirname,"../../bookingappfromtend/dist/index.html"))
-})
-
 
 app.use(cors({
     origin:process.env.FRONTEND_URL ,
     credentials:true
 }));
 
+
+
+
 app.use(express.static(path.join(__dirname,"../../bookingappfromtend/dist")))
 
 app.use("/api/auth",authRoutes)
 app.use("/api/users",userRoutes)
 app.use("/api/my-hotels",myHotelRoutes)
+
+
+app.get("*",(req:Request,res:Response)=>{
+    res.sendFile(path.join(__dirname,"../../bookingappfromtend/dist/index.html"))
+})
+
 
 const PORT=process.env.PORT  || 7000
 app.listen(PORT,()=>{
