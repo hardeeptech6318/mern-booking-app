@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form"
-import { useMutation } from "react-query";
+import {  useMutation, useQueryClient } from "react-query";
 import { signIn } from "../api-clients";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import toast from 'react-hot-toast';
 
 export type LoginFormData={
@@ -13,13 +13,19 @@ export type LoginFormData={
 function SignIn() {
 
   const navigate=useNavigate()
+  const location = useLocation();
+
+  const queryClient=useQueryClient()
 
   const {register,handleSubmit,formState:{errors}}=useForm<LoginFormData>()
 
   const mutation =useMutation(signIn,{
-    onSuccess:()=>{
-      navigate("/")
+    onSuccess:async ()=>{
       toast.success("Login Success!")
+      await queryClient.invalidateQueries("validateToken");
+      navigate(location?.state?.from?.pathname || "/");
+
+      
     
   },
     onError:(errors:Error)=>{
@@ -68,7 +74,7 @@ function SignIn() {
 
           </span>
 
-          <button type="submit" className=" bg-blue-600 text-white p-2 font-bold hover:bg-blue-500 text-xl">Login</button>
+          <button type="submit" className=" bg-blue-600 text-white p-2 font-bold hover:bg-blue-500 text-xl rounded">Login</button>
           
         </span>
 

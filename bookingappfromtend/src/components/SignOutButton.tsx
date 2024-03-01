@@ -19,7 +19,7 @@ function SignOutButton() {
     }
 
   return (
-    <button onClick={handleSubmit} className=" text-blue-600 px-3 font-bo bg-white hover:bg-gray-100">Sign Out</button>
+    <button onClick={handleSubmit} className=" text-blue-600 px-3 font-bold bg-white hover:bg-gray-100 rounded">Sign Out</button>
   )
 }
 

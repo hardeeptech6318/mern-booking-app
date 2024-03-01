@@ -22,7 +22,7 @@ function ImageSection() {
               {existingImage.map((e:string)=>(
                 <div key={e} className=" relative group">
                   <img src={e} className="min-h-full object-cover"/>
-                  <button onClick={(event)=>handleDelete(event,e)} className=" absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 text-white">Delete</button>
+                  <button onClick={(event)=>handleDelete(event,e)} className=" absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 opacity-0 group-hover:opacity-100 text-white rounded">Delete</button>
                 </div>
               ))}
               </div>
@@ -33,9 +33,10 @@ function ImageSection() {
             className=" w-full text-gray-700 font-normal"
             type="file" {...register("imageFiles",{
                 validate:(image)=>{
-                  console.log(image);
                   
-                    const totalLenght=image.length + existingImage?.length || 0;
+                  
+                    const totalLenght=image.length + (existingImage?.length || 0);
+                    
                     if(totalLenght===0){
                         return "At least one image is required"
                     }

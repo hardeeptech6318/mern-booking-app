@@ -64,7 +64,7 @@ function ManageHotelForm({onSave,isLoading,hotel}:Props) {
         return formdata.append(`facilities[${i}]`,e)
       })
 
-      console.log(data.imageUrls);
+      
       
       if(data?.imageUrls){
         data.imageUrls.forEach((url:string,index:number)=>{
@@ -89,7 +89,7 @@ function ManageHotelForm({onSave,isLoading,hotel}:Props) {
         <GuestSection/>
         <ImageSection/>
         <span className="flex justify-end">
-            <button disabled={isLoading} type="submit" className=" bg-blue-600 text-white p-2 font-bold hover:bg-blue-500 text-xl disabled:bg-gray-500"> Save</button>
+            <button disabled={isLoading} type="submit" className=" rounded bg-blue-600 text-white p-2 font-bold hover:bg-blue-500 text-xl disabled:bg-gray-500"> Save</button>
         </span>
     </form>
     </FormProvider>
