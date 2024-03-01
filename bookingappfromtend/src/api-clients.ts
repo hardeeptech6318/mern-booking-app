@@ -3,9 +3,17 @@ import { RegisterFormData } from "./pages/Register";
 import { LoginFormData } from "./pages/SignIn";
 const API_BASE_URL =import.meta.env.VITE_API_BASE_URL || '';
 
-import {HotelSearchResponse} from "../../backend/src/shared/type"
+
 import { BookingSubmitData } from "./forms/bookingForm/BookingForm";
 
+export type HotelSearchResponse ={
+  data:HotelType[];
+  pagination:{
+      total:number;
+      page:number;
+      pages:number;
+  }
+}
 
 export type HotelType={
     _id:string;
