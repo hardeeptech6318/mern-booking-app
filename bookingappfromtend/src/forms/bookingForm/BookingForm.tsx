@@ -33,6 +33,8 @@ export type BookingSubmitData={
     checkOut:Date
     hotelId:string;
     totalAmount:number;
+    hotelName:string;
+    city:string
     
 }
 
@@ -41,6 +43,7 @@ export type BookingSubmitData={
 
 function BookingForm({currentUser,numberOfNights,costPerNight,adultCount,childCount,checkIn,checkOut,hotel}:Props) {
     
+    console.log(hotel);
     
 const {register,handleSubmit}=useForm<BookingFormData>({
     defaultValues:{
@@ -76,6 +79,8 @@ const mutation =useMutation(userBooking,{
         email:data.email,
         currentUser:currentUser._id,
         totalAmount:costPerNight*numberOfNights,
+        hotelName:hotel.name,
+        city:hotel.city
     }
       mutation.mutate(obj)
   })

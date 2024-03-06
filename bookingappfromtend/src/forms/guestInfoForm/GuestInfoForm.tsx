@@ -19,7 +19,7 @@ type GuestInfoFormData = {
 const GuestInfoForm = ({ hotelId, pricePerNight }: Props) => {
   const search = useSearchContext();
   const { isLoggedIn } = useAppContext();
-  console.log(isLoggedIn);
+ 
   
   const navigate = useNavigate();
   const location = useLocation();

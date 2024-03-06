@@ -32,7 +32,7 @@ function SearchBar() {
     maxDate.setFullYear(maxDate.getFullYear()+1)
 
   return (
-    <form onSubmit={handleSubmit} className='-mt-8 p-3 bg-orange-400 rounded shadow-md grid grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 items-center gap-4'>
+    <form onSubmit={handleSubmit} className='-mt-8 p-3 bg-orange-400 rounded shadow-md grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-5 items-center gap-4'>
 
 <div className=' flex gap-5 flex-1'>
           <select

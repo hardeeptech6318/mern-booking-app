@@ -265,3 +265,17 @@ export const searchHotels = async (searchParams: SearchParams):Promise<HotelSear
       return response.json();
 }
 
+
+export const myBookings=async()=>{
+  const response=await fetch(`${API_BASE_URL}/api/my-hotels/my-booking`, {
+      method: "GET",
+      credentials: "include",
+      
+    });
+    if (!response.ok) {
+      throw new Error("Failed to Fetch Bookings");
+    }
+  
+    return response.json();
+}
+

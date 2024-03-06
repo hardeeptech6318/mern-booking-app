@@ -120,9 +120,9 @@ const constructSearchQuery = (queryParams: any) => {
 
   router.post("/booking",async (req: Request, res: Response) => {
     try {
-      console.log(req.body);
-      const data:BookingSubmitData=req.body
-      await new Booking(data)
+      
+      const data=req.body
+      await new Booking(data).save()
       
 
       return res.status(200).json({message:"Booking Confirmed"})

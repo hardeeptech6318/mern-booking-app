@@ -5,6 +5,7 @@ import multer from "multer"
 import Hotel, { HotelType } from "../models/hotel";
 import verifyToken from "../middleware/auth";
 import { body} from "express-validator";
+import Booking, { BookingSubmitData } from "../models/booking";
 
 const storage=multer.memoryStorage();
 const upload=multer({
@@ -58,6 +59,22 @@ router.get("/",verifyToken,async(req:Request,res:Response)=>{
 })
 
 
+router.get("/my-booking",verifyToken,async(req:Request,res:Response)=>{
+    console.log("hii");
+   
+    
+    try {
+        const hotel=await Booking.find({currentUser:req.userId})
+        
+        
+        res.send(hotel)
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({message:"Something went wrong"})
+    }
+})
+
+
 router.get("/:id",verifyToken,async(req:Request,res:Response)=>{
     try {
         const id=req.params.id.toString()
@@ -73,10 +90,10 @@ router.get("/:id",verifyToken,async(req:Request,res:Response)=>{
 
 router.put("/:hotelId",verifyToken ,upload.array("imageFiles",6),async(req:Request,res:Response)=>{
     try {
-        console.log(req.body);
+        
         
         const updatedHotel:HotelType=req.body
-        console.log(updatedHotel.imageUrls);
+        
         
         updatedHotel.lastUpdated=new Date();
 
@@ -123,5 +140,7 @@ async function uploadImage(imageFiles: Express.Multer.File[]) {
     const imageUrls = await Promise.all(uploadPromises);
     return imageUrls;
 }
+
+
 
 export default router
